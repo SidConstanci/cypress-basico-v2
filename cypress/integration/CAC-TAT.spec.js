@@ -88,5 +88,17 @@ import '../support/cac_tat_commands'
 
             cy.get('.success').should('be.visible')
         });
+        //Exercicio 009
+        it.only('seleciona um produto (YouTube) por seu texto', () => {
+            cy.contains('YouTube').should('contain.text', 'YouTube')
+        });
+        //Exercicio 009/001
+        it.only('seleciona um produto (Mentoria) por seu valor (value)', () => {
+            cy.get('#product').select('mentoria').should('have.value', 'mentoria')
+        })
+        //Exercicio 009/002
+        it.only('seleciona um produto (Blog) por seu índice', () => {
+            cy.contains('#product', 'Blog').select([1]).should('contain.text', 'Blog')
+        })
     })
 

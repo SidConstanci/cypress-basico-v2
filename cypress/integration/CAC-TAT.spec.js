@@ -89,16 +89,29 @@ import '../support/cac_tat_commands'
             cy.get('.success').should('be.visible')
         });
         //Exercicio 009
-        it.only('seleciona um produto (YouTube) por seu texto', () => {
+        it('seleciona um produto (YouTube) por seu texto', () => {
             cy.contains('YouTube').should('contain.text', 'YouTube')
         });
         //Exercicio 009/001
-        it.only('seleciona um produto (Mentoria) por seu valor (value)', () => {
+        it('seleciona um produto (Mentoria) por seu valor (value)', () => {
             cy.get('#product').select('mentoria').should('have.value', 'mentoria')
         })
         //Exercicio 009/002
-        it.only('seleciona um produto (Blog) por seu índice', () => {
+        it('seleciona um produto (Blog) por seu índice', () => {
             cy.contains('#product', 'Blog').select([1]).should('contain.text', 'Blog')
+        })
+        //Exercicio 010
+        it('marca o tipo de atendimento "Feedback"', () => {
+            cy.get('input[value="feedback"]').check().should('contain.value', 'feedback')
+        })
+        //Exercicio 010/001
+        it.only('marca cada tipo de atendimento', () => {
+            cy.get('input[type="radio"]')
+                .should('have.length', 3)
+                .each(function ($radio){
+                    cy.wrap($radio).check()
+                    cy.wrap($radio).should('be.checked')
+                })
         })
     })
 
